@@ -1,57 +1,510 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Happy Monthsary ❤️</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#eff6dd">
+  <meta name="description" content="A little monthsary surprise, made with lots of love.">
+  <title>A Little Love Note for You</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #514139;
+      --muted: #76685c;
+      --pink: #efa1c1;
+      --pink-dark: #d66f9b;
+      --pink-soft: #fae7ee;
+      --cream: #eff6dd;
+      --yellow: #ffedb5;
+      --blue: #dcebc8;
+      --white: #fffef6;
+      --shadow: 0 18px 55px rgba(67, 78, 45, .12);
+    }
 
-<style>
-body{
-    background:#FFF5F7;
-    font-family:Arial,sans-serif;
-    text-align:center;
-    padding:50px;
-}
+    * { box-sizing: border-box; }
 
-.card{
-    background:white;
-    padding:30px;
-    border-radius:20px;
-    width:80%;
-    margin:auto;
-    box-shadow:0 0 15px rgba(0,0,0,.1);
-}
+    html { scroll-behavior: smooth; }
 
-h1{
-    color:#ff7eb9;
-}
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(ellipse at 8% 18%, rgba(255, 237, 181, .62), transparent 28rem),
+        radial-gradient(ellipse at 94% 54%, rgba(199, 224, 166, .5), transparent 30rem),
+        var(--cream);
+      font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+      line-height: 1.65;
+    }
 
-img{
-    width:250px;
-    border-radius:20px;
-}
-</style>
+    button { font: inherit; }
+
+    .page-wrap {
+      width: min(100% - 40px, 1080px);
+      margin: 0 auto;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 76px;
+      gap: 20px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      color: var(--ink);
+      font-size: .95rem;
+      font-weight: 800;
+      letter-spacing: .02em;
+      text-decoration: none;
+    }
+
+    .brand-heart { color: var(--pink-dark); font-size: 1.25rem; }
+
+    .top-note {
+      color: var(--muted);
+      font-size: .83rem;
+    }
+
+    .hero {
+      position: relative;
+      display: grid;
+      min-height: 590px;
+      place-items: center;
+      overflow: hidden;
+      padding: 68px 22px 76px;
+      border: 1px solid rgba(255, 255, 255, .85);
+      border-radius: 34px;
+      background: rgba(255, 254, 246, .88);
+      box-shadow: var(--shadow);
+      text-align: center;
+    }
+
+    .hero::before, .hero::after {
+      position: absolute;
+      z-index: 0;
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      background: var(--yellow);
+      content: "";
+      opacity: .8;
+    }
+
+    .hero::before { top: -115px; left: -58px; }
+    .hero::after { right: -100px; bottom: -120px; background: #dcebc8; }
+
+    .hero-content { position: relative; z-index: 1; max-width: 650px; }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin: 0 0 17px;
+      padding: 7px 14px;
+      border: 1px solid #efd0dc;
+      border-radius: 999px;
+      background: #fff8f4;
+      color: var(--pink-dark);
+      font-size: .76rem;
+      font-weight: 800;
+      letter-spacing: .11em;
+      text-transform: uppercase;
+    }
+
+    .hero-art {
+      width: min(100%, 475px);
+      margin: 0 auto 25px;
+      padding: 7px;
+      border: 1px solid rgba(81, 65, 57, .22);
+      border-radius: 27px;
+      background: var(--white);
+      box-shadow: 0 10px 25px rgba(67, 78, 45, .14);
+      transform: rotate(-1deg);
+    }
+
+    .hero-art img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 535 / 314;
+      border-radius: 20px;
+      object-fit: cover;
+    }
+
+    .hero-art figcaption {
+      padding: 5px 5px 1px;
+      color: var(--muted);
+      font-size: .76rem;
+    }
+
+    h1, h2, p { margin-top: 0; }
+
+    h1 {
+      margin-bottom: 12px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(2.5rem, 7vw, 4.65rem);
+      font-weight: 700;
+      letter-spacing: -.055em;
+      line-height: 1.05;
+    }
+
+    h1 span { color: var(--pink-dark); }
+
+    .hero-copy {
+      max-width: 490px;
+      margin: 0 auto 27px;
+      color: var(--muted);
+      font-size: clamp(1rem, 2.5vw, 1.12rem);
+    }
+
+    .button {
+      display: inline-flex;
+      min-height: 50px;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      padding: 12px 22px;
+      border: 0;
+      border-radius: 999px;
+      background: var(--pink-dark);
+      box-shadow: 0 7px 0 #b95b81, 0 12px 22px rgba(183, 81, 127, .22);
+      color: white;
+      text-shadow: 0 1px 2px rgba(81, 65, 57, .2);
+      cursor: pointer;
+      font-weight: 800;
+      text-decoration: none;
+      transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
+    }
+
+    .button:hover { background: #c65e8c; transform: translateY(2px); box-shadow: 0 5px 0 #a94d76; }
+    .button:active { transform: translateY(6px); box-shadow: 0 1px 0 #a94d76; }
+    .button:focus-visible, a:focus-visible { outline: 3px solid #76685c; outline-offset: 4px; }
+
+    .floating {
+      position: absolute;
+      color: var(--pink-dark);
+      font-size: 1.35rem;
+      animation: twinkle 2.8s ease-in-out infinite;
+    }
+
+    .float-one { top: 17%; left: 18%; }
+    .float-two { top: 27%; right: 17%; animation-delay: .8s; }
+    .float-three { bottom: 17%; left: 23%; animation-delay: 1.4s; }
+    .float-four { right: 25%; bottom: 13%; animation-delay: .4s; }
+
+    section { padding: 88px 0 0; }
+
+    .section-heading {
+      margin-bottom: 29px;
+      text-align: center;
+    }
+
+    .section-heading .eyebrow { margin-bottom: 10px; }
+
+    h2 {
+      margin-bottom: 9px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(2rem, 4vw, 2.75rem);
+      letter-spacing: -.035em;
+      line-height: 1.15;
+    }
+
+    .section-heading p { margin-bottom: 0; color: var(--muted); }
+
+    .reasons {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 17px;
+    }
+
+    .reason {
+      min-height: 186px;
+      padding: 24px 23px;
+      border: 1px solid rgba(255, 255, 255, .95);
+      border-radius: 23px;
+      background: rgba(255, 254, 246, .87);
+      box-shadow: 0 12px 32px rgba(67, 78, 45, .09);
+    }
+
+    .reason-icon {
+      display: grid;
+      width: 45px;
+      height: 45px;
+      margin-bottom: 14px;
+      place-items: center;
+      border-radius: 15px;
+      background: var(--pink-soft);
+      font-size: 1.35rem;
+    }
+
+    .reason:nth-child(2) .reason-icon { background: var(--yellow); }
+    .reason:nth-child(3) .reason-icon { background: var(--blue); }
+
+    .reason h3 { margin: 0 0 6px; font-size: 1.05rem; }
+    .reason p { margin: 0; color: var(--muted); font-size: .92rem; }
+
+    .usagi-section { padding-top: 82px; }
+
+    .usagi-gallery {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .usagi-card {
+      overflow: hidden;
+      margin: 0;
+      padding: 12px;
+      border: 1px solid rgba(81, 65, 57, .08);
+      border-radius: 24px;
+      background: #fff9e9;
+      box-shadow: 0 12px 30px rgba(67, 78, 45, .09);
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+
+    .usagi-card:hover {
+      transform: translateY(-4px) rotate(-.5deg);
+      box-shadow: 0 17px 34px rgba(67, 78, 45, .14);
+    }
+
+    .usagi-card:nth-child(3n + 2) { background: #f9e9eb; }
+    .usagi-card:nth-child(3n) { background: #e6efd9; }
+
+    .usagi-card img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 1;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, .48);
+      object-fit: contain;
+      mix-blend-mode: multiply;
+    }
+
+    .usagi-card figcaption {
+      padding: 11px 5px 3px;
+      color: var(--ink);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1rem;
+      text-align: center;
+    }
+
+    .letter-section { padding-bottom: 76px; }
+
+    .letter-card {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: clamp(25px, 5vw, 48px);
+      border: 1px solid #d5e4bd;
+      border-radius: 28px;
+      background:
+        repeating-linear-gradient(transparent 0 37px, rgba(172, 197, 140, .22) 37px 38px),
+        #fffdf2;
+      box-shadow: var(--shadow);
+      text-align: center;
+    }
+
+    .letter-icon { margin-bottom: 8px; font-size: 2rem; }
+    .letter-card h2 { font-size: clamp(1.8rem, 4vw, 2.35rem); }
+    .letter-card > p { margin-bottom: 24px; color: var(--muted); }
+
+    .letter {
+      max-width: 520px;
+      margin: 27px auto 0;
+      padding: 22px 24px;
+      border-radius: 18px;
+      background: rgba(255, 255, 250, .88);
+      color: var(--ink);
+      text-align: left;
+      animation: appear .35s ease both;
+    }
+
+    .letter p { margin-bottom: 12px; }
+    .letter p:last-child { margin-bottom: 0; }
+    .signature { color: var(--pink-dark); font-family: Georgia, "Times New Roman", serif; font-size: 1.2rem; font-style: italic; }
+    [hidden] { display: none !important; }
+
+    footer {
+      padding: 23px 20px 34px;
+      color: var(--muted);
+      font-size: .83rem;
+      text-align: center;
+    }
+
+    footer span { color: var(--pink-dark); }
+
+    @keyframes bob {
+      0%, 100% { transform: translateY(0) rotate(-4deg); }
+      50% { transform: translateY(-9px) rotate(2deg); }
+    }
+
+    @keyframes twinkle {
+      0%, 100% { opacity: .55; transform: scale(.85) rotate(-8deg); }
+      50% { opacity: 1; transform: scale(1.15) rotate(9deg); }
+    }
+
+    @keyframes appear {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 700px) {
+      .page-wrap { width: min(100% - 28px, 560px); }
+      .topbar { min-height: 65px; }
+      .top-note { font-size: .76rem; }
+      .hero { min-height: 550px; padding: 56px 19px 62px; border-radius: 27px; }
+      .hero-art { margin-bottom: 22px; border-radius: 23px; }
+      .hero-art img { border-radius: 16px; }
+      .float-one { left: 7%; }
+      .float-two { right: 7%; }
+      .float-three { left: 9%; bottom: 10%; }
+      .float-four { right: 10%; bottom: 9%; }
+      section { padding-top: 68px; }
+      .reasons { grid-template-columns: 1fr; gap: 12px; }
+      .reason { display: grid; min-height: auto; grid-template-columns: 48px 1fr; column-gap: 13px; padding: 19px; }
+      .reason-icon { grid-row: span 2; margin: 0; }
+      .reason h3 { align-self: end; }
+      .reason p { align-self: start; }
+      .usagi-section { padding-top: 68px; }
+      .usagi-gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+      .usagi-card { padding: 8px; border-radius: 19px; }
+      .usagi-card img { border-radius: 13px; }
+      .usagi-card figcaption { padding-top: 8px; font-size: .9rem; }
+      .letter-section { padding-bottom: 54px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        scroll-behavior: auto !important;
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+      }
+    }
+  </style>
 </head>
-
 <body>
+  <div class="page-wrap">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="A little love note for you, home">
+        <span class="brand-heart" aria-hidden="true">♥</span>
+        <span>a little something for you</span>
+      </a>
+      <span class="top-note">made with all my love ✿</span>
+    </header>
 
-<div class="card">
+    <main>
+      <section class="hero" aria-labelledby="hero-title">
+        <span class="floating float-one" aria-hidden="true">✦</span>
+        <span class="floating float-two" aria-hidden="true">♥</span>
+        <span class="floating float-three" aria-hidden="true">✿</span>
+        <span class="floating float-four" aria-hidden="true">✧</span>
+        <div class="hero-content">
+          <p class="eyebrow"><span aria-hidden="true">♡</span> a tiny monthsary surprise</p>
+          <figure class="hero-art">
+            <img src="assets/chiikawa-garden.png" alt="Chiikawa and friends enjoying a flower-filled sage-green garden">
+            <figcaption>A little garden full of friends, flowers, and love ✿</figcaption>
+          </figure>
+          <h1 id="hero-title">Happy 41st Monthsary,<br><span>Labi!</span></h1>
+          <p class="hero-copy">Another little chapter with you, and somehow I love you even more than before.</p>
+          <a class="button" href="#love-note">Open your little surprise <span aria-hidden="true">♡</span></a>
+        </div>
+      </section>
 
-<img src="https://i.imgur.com/example.png">
+      <section aria-labelledby="reasons-title">
+        <div class="section-heading">
+          <p class="eyebrow">my favorite things</p>
+          <h2 id="reasons-title">A few reasons I adore you</h2>
+          <p>There are a million, but here are three for today.</p>
+        </div>
+        <div class="reasons">
+          <article class="reason">
+            <span class="reason-icon" aria-hidden="true">☀️</span>
+            <h3>You brighten ordinary days</h3>
+            <p>Even the smallest moments feel special when I get to share them with you.</p>
+          </article>
+          <article class="reason">
+            <span class="reason-icon" aria-hidden="true">🌷</span>
+            <h3>Your heart is so lovely</h3>
+            <p>Your kindness makes everyone around you feel a little more at home.</p>
+          </article>
+          <article class="reason">
+            <span class="reason-icon" aria-hidden="true">🧸</span>
+            <h3>You feel like my safe place</h3>
+            <p>With you, I can be completely myself—and that means everything to me.</p>
+          </article>
+        </div>
+      </section>
 
-<h1>Happy Monthsary Love ❤️</h1>
+      <section class="usagi-section" aria-labelledby="usagi-title">
+        <div class="section-heading">
+          <p class="eyebrow">a little usagi love</p>
+          <h2 id="usagi-title">Your favorite little friend</h2>
+          <p>A few cute faces to make your day a little brighter.</p>
+        </div>
+        <div class="usagi-gallery">
+          <figure class="usagi-card">
+            <img src="assets/Usagi%20%F0%9F%92%9B.jpg" alt="Usagi holding a bouquet of pink flowers" loading="lazy">
+            <figcaption>A bouquet, just for you</figcaption>
+          </figure>
+          <figure class="usagi-card">
+            <img src="assets/usagi%20sticker.jpg" alt="A shy little Usagi looking over its shoulder" loading="lazy">
+            <figcaption>A tiny happy wiggle</figcaption>
+          </figure>
+          <figure class="usagi-card">
+            <img src="assets/usagi%20icon!_%23chiikawa%20%23usagi.jpg" alt="Usagi waving hello with a cheerful smile" loading="lazy">
+            <figcaption>The cutest little hello</figcaption>
+          </figure>
+          <figure class="usagi-card">
+            <img src="assets/download.jpg" alt="Usagi dressed up in a big pink heart" loading="lazy">
+            <figcaption>A whole lot of love</figcaption>
+          </figure>
+          <figure class="usagi-card">
+            <img src="assets/download%20(1).jpg" alt="Usagi holding a pink flower" loading="lazy">
+            <figcaption>A flower for my favorite</figcaption>
+          </figure>
+          <figure class="usagi-card">
+            <img src="assets/chiikawa%20usagi%20icon.jpg" alt="A sweet little Usagi with a playful pose" loading="lazy">
+            <figcaption>One last little cutie</figcaption>
+          </figure>
+        </div>
+      </section>
 
-<p>
-Thank you for being the cutest part of my life.
-Every day with you feels like a blessing.
-</p>
+      <section class="letter-section" id="love-note" aria-labelledby="letter-title">
+        <div class="letter-card">
+          <div class="letter-icon" aria-hidden="true">💌</div>
+          <h2 id="letter-title">A little note, just for you</h2>
+          <p>I made you something tiny, but I put a whole lot of love into it.</p>
+          <button class="button" id="letter-button" type="button" aria-expanded="false" aria-controls="letter">
+            Open my letter <span aria-hidden="true">♡</span>
+          </button>
+          <div class="letter" id="letter" hidden>
+            <p>To my favorite person,</p>
+            <p>Thank you for making my days softer, sillier, and so much brighter. I’m grateful for every laugh, every little conversation, and every moment I get to call you mine.</p>
+            <p>Here’s to us and all the sweet memories still waiting for us. I love you—today, next month, and always.</p>
+            <p class="signature">Forever yours ♡</p>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
 
-<h2>🐰 Chiikawa Says:</h2>
+  <footer>made for you, with <span aria-label="love">♥</span> and a little bit of magic</footer>
 
-<p>
-I love you more and more every month.
-</p>
+  <script>
+    const letterButton = document.querySelector("#letter-button");
+    const letter = document.querySelector("#letter");
 
-</div>
-
+    letterButton.addEventListener("click", () => {
+      const isOpening = letter.hidden;
+      letter.hidden = !isOpening;
+      letterButton.setAttribute("aria-expanded", String(isOpening));
+      letterButton.innerHTML = isOpening
+        ? 'Close my letter <span aria-hidden="true">♡</span>'
+        : 'Open my letter <span aria-hidden="true">♡</span>';
+    });
+  </script>
 </body>
 </html>
